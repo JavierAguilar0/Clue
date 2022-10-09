@@ -31,20 +31,20 @@ BarraDialogo=PhotoImage(file="Dialogo.png")
 nombres=['Asta','Eren','Meliodas','Natsu','Tanjiro']
 imagenes=[asta,eren,meliodas,natsu,tanjiro]
 lugar=['Azotea','Comedor','Gimnasio','Piscina','Salon']
-pista=['Bandana negra','Equipo de maniobras','Espada rota','Bufanda blanca','Pendientes del sol']
+arma=['Espada antimagia','Acero endurecido','Espada rota','Fuego','Espada de agua']
 #random del asesino
 a=random.randint(0,4)
-asesino=[nombres[a],lugar[random.randint(0,4)],pista[random.randint(0,4)],imagenes[a]]
+asesino=[nombres[a],lugar[random.randint(0,4)],arma[random.randint(0,4)],imagenes[a]]
 #creacion de mapa
 Mapa=[] 
 Conclusion=[]
 AccionesCount=0
 for z in range(5):
     a=random.randint(0,(len(nombres)-1))
-    Mapa.append([nombres[a],lugar[random.randint(0,len(lugar)-1)],pista[random.randint(0,len(pista)-1)],imagenes[a]])
+    Mapa.append([nombres[a],lugar[random.randint(0,len(lugar)-1)],arma[random.randint(0,len(arma)-1)],imagenes[a]])
     nombres.remove(Mapa[z][0])
     lugar.remove(Mapa[z][1])
-    pista.remove(Mapa[z][2])
+    arma.remove(Mapa[z][2])
     imagenes.remove(Mapa[z][3])
 #creacion del canvas
 canvas=Canvas(root,width=1280,height=720)
@@ -379,7 +379,7 @@ def resolvermisterio():
     DialogFinal=["Luffy \n\nExcelente, ya es hora de encontrar al bastardo que mató a Saitama",
                 "Luffy \n\nQuien es el asesino?",
                 "Luffy \n\nEn donde fué asesinado Saitama?",
-                "Luffy \n\nPor último, que te llevó a decidir quien era el asesino?"]
+                "Luffy \n\nPor último, con que arma se realizo el asesinato?"]
     if DialogCount>0 and DialogCount<len(DialogFinal):
         canvas.itemconfig(dialogo,text=DialogFinal[DialogCount])
         boton_uno.configure(text=Mapa[0][DialogCount-1])
@@ -393,7 +393,7 @@ def resolvermisterio():
         canvas.delete(dialogo)
         canvas.delete(Imagen)
         ans=0
-        for a in 'Bandana negra','Equipo de maniobras','Espada rota','Bufanda blanca','Pendientes del sol':
+        for a in 'Espada antimagia','Acero endurecido','Espada rota','Fuego','Espada de agua':
             if asesino[2]==a:
                 break
             ans+=1
@@ -426,11 +426,11 @@ def Final(r):
     global dialogo
     global Imagen, EnLugar
     if r==True: 
-        objetivos=[f"la {asesino[2]} que encontramos como pista? \nBueno, resulta que esa bandana negra es de que Asta \nMusculo sin cerebro.",
-                  f"el {asesino[2]} que encontramos como pista? \nBueno, resulta que ese equipo de maniobras le pertenece a Eren \nTitan descuidado.",
+        objetivos=[f"la {asesino[2]} que encontramos como pista? \nBueno, resulta que esa espada antimagia es de que Asta \nMusculo sin cerebro.",
+                  f"el {asesino[2]} que encontramos como pista? \nBueno, resulta que ese acero endurecido le pertenece a Eren \nTitan descuidado.",
                   f"la {asesino[2]} que encontramos como pista? \nBueno, resulta que la espada rota le pertenece a Meliodas \nMaldito demonio.",
-                  f"la {asesino[2]} que encontramos como pista? \nBueno, recorde que esa bufanda blanca le pertenece a Natsu \nMe sorprende que no la haya quemado con su poder.",
-                  f"los {asesino[2]} que encontramos como pista? \nBueno, los pendientes del sol son de Tanjiro \nLe encanta joder con unas posturas de su espada."]
+                  f"el {asesino[2]} que encontramos como pista? \nBueno, recorde que ese fuego es de la habilidad de Natsu \nMe sorprende que no lo haya quemado todo.",
+                  f"la {asesino[2]} que encontramos como pista? \nBueno, la espada de agua es de Tanjiro \nLe encanta joder con unas posturas medio raras."]
         
         Dialogo_Final=["Naruto \n\nMuy bien chicos, finalmente hemos dado con el asesino de Saitama.\nFue..",
                      f"Goku \n\n{asesino[0]} ?!?!?",
@@ -443,7 +443,7 @@ def Final(r):
                       f"{asesino[0]} \n\nNunca les diré donde está el cuerpo de su estúpido ami.....",
                       "Saitama \n\nHola chicos que estan haciendo?",
                       "Luffy \n\nSaitama? Hijo de perra, como es que sigues vivo?",
-                      f"Saitama \n\nPues {asesino[0]} intento encerrarme con muchos monstruos \n pero los derrote a todos de un solo golpe",
+                      f"Saitama \n\nPues {asesino[0]} intento matarme pero solo consiguio \nnoquearme y penso que estaba muerto",
                       "Goku \n\nTiene que ser una broma, ¿acaso no puedes morir?",
                       "Saitama \n\nLa verdad no se, aun no conozco a una persona o monstruo capaz\nde aguantar mas de un golpe asi que de momento no puedo morir",
                       "Luffy \n\nMaldita se Saitama, estabamos tan preocupados por ti.",
@@ -467,7 +467,7 @@ def Final(r):
             dialogo=canvas.create_text(200,440,fill="White",text=Dialogo_Final[DialogCount],anchor="nw",font=("Helvetica",20))
     else:
         Imagen=canvas.create_image(0,0,image=luffy,anchor="nw")
-        dialogo=canvas.create_text(200,440,fill="White",text=f"Luffy \n\nTe falta investigar mejor.\nCulpable:{asesino[0]}\nLugar:{asesino[1]}\nPista:{asesino[2]}",anchor="nw",font=("Helvetica",20)) 
+        dialogo=canvas.create_text(200,440,fill="White",text=f"Luffy \n\nTe falta investigar mejor.\nCulpable:{asesino[0]}\nLugar:{asesino[1]}\narma:{asesino[2]}",anchor="nw",font=("Helvetica",20)) 
         EnLugar=7
 #boton piscina
 boton_piscina=Button(canvas,text="Piscina",width=12,command=cambia_piscina)  
