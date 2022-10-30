@@ -285,14 +285,14 @@ def encontrarpista():
     global Imagen
     dialogo1=["Luffy \n\nVale nakamas, hay que dividirnos y encontremos cualquier cosa que nos pueda \nllevar al asesino de Saitama.",
              "Naruto \n\nRayos! Acabo de encontrar algo...",
-             "Naruto \n\nEncontre "+asesino[2]+", \npero no estoy seguro de a quien le pertenece.",
+             "Naruto \n\nEncontre "+asesino[2]+", pero no estoy seguro de a quien le pertenece.",
              "Ichigo \n\nQuizas el asesino de Saitama lo dejo caer accidentalmente."]
     ImgTex1=[luffy,naruto,naruto,ichigo]
     
     dialogo2=["Luffy \n\nVale nakamas, hay que dividirnos y encontremos cualquier cosa que nos pueda \nllevar al asesino de Saitama.",
              "...",
              "Goku \n\nParece ser que no hay nada por aquí que nos indique que fue aquí mismo \ndonde mataron a Saitama",
-             "Naruto \n\nTenemos que seguir buscando, quizá deberíamos probar suerte en otro lugar..."]
+             "Naruto \n\nTenemos que seguir buscando..."]
     ImgTex2=[luffy,BarraDialogo,goku,naruto]
     
     if asesino[2]==Mapa[zmapa][2]:
